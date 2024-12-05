@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>reproduction</title>
+    <script src="http://unpkg.com/tone"></script>
+</head>
+<body>
+<h1>Issue Repo</h1>
+<button id="play">play c4</button>
+<button id="stop-str">stop c4 with text</button>
+<button id="stop-index">stop c4 with index</button>
+<script type="module">
+    import { SplendidGrandPiano} from "https://unpkg.com/smplr/dist/index.mjs";
+    const context = new AudioContext();
+    const piano = new SplendidGrandPiano(context);
+
+    piano.load.then(() => {
+        console.log("Piano loaded");
+    });
+
+    document.getElementById('play').addEventListener('click', () => {
+        piano.start("C4");
+    });
+
+    document.getElementById('stop-str').addEventListener('click', () => {
+        piano.stop("C4");
+    });
+
+    document.getElementById('stop-index').addEventListener('click', () => {
+        piano.stop(60);
+    });
+
+</script>
+</body>
+</html>
+
